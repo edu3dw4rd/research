@@ -12,7 +12,7 @@ class Researchjs {
     constructor(rediConnection, opts) {
         this.db = redis.createClient(rediConnection)
         this.db.on("error", function(err) {
-            throw new Error("Failed to connect to redisearch. Error: " + error.message)
+            throw new Error("Failed to connect to redisearch. Error: " + err.message)
         })
         this.withScores = true
         this.highlight  = opts.highlight!=undefined ? opts.highlight : false
