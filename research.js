@@ -1,4 +1,3 @@
-let redis = require("redis")
 let _ = require("lodash")
 
 'use strict'
@@ -9,11 +8,8 @@ class Researchjs {
      * @param {Object} rediConnection {host, port}
      * @param {Boolean} withScores 
      */
-    constructor(rediConnection, opts) {
-        this.db = redis.createClient(rediConnection)
-        this.db.on("error", function(err) {
-            throw new Error("Failed to connect to redisearch. Error: " + err.message)
-        })
+    constructor(redisClient, opts) {
+        this.db = redisClient
         this.withScores = true
         this.highlight  = opts.highlight!=undefined ? opts.highlight : false
     }
